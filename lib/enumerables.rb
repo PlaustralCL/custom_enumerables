@@ -5,15 +5,44 @@
 module Enumerable
   # rubocop:disable Style/For
   def my_each
-    for element in self
-      yield element
+    return to_enum unless block_given?
+
+    index = 0
+    while index < length
+      yield self[index]
+      index += 1
     end
+    self
   end
 
   def my_each_with_index
-    for index in 0..(self.length - 1)
+    return to_enum unless block_given?
+
+    for index in 0..(length - 1)
       yield(self[index], index)
     end
   end
 
+  def my_select
+    return to_enum unless block_given?
+
+    result = []
+    for index in 0..(length - 1)
+      result.push(self[index]) if yield(self[index])
+    end
+    result
+  end
+
+
+end
+
+if $PROGRAM_NAME == __FILE__
+  numbers = [44, 66, 9, 12]
+  numbers.my_each { |item| puts item }
+  puts ""
+  numbers.each { |item| puts item }
+  puts ""
+
+  p numbers.my_each
+  p numbers.each
 end
