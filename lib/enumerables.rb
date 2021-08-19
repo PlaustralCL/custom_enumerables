@@ -33,6 +33,20 @@ module Enumerable
     result
   end
 
+  def my_all?
+    unless block_given?
+      for index in 0..(length - 1)
+        return false unless self[index]
+      end
+      true
+    end
+
+    for index in 0..(length - 1)
+      return false unless yield self[index]
+    end
+    true
+  end
+
 
 end
 
