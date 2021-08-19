@@ -28,8 +28,8 @@ puts numbers.each_with_index
 puts ""
 
 puts "my_select vs select"
-puts "#{numbers.my_select { |num| num.even? }}"
-puts "#{numbers.select { |num| num.even?}}"
+puts numbers.my_select { |num| num.even? }.to_s
+puts numbers.select { |num| num.even? }.to_s
 
 # if $PROGRAM_NAME == __FILE__
 #   def run
