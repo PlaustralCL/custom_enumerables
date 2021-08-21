@@ -49,6 +49,14 @@ module Enumerable
     false
   end
 
+  def my_none?(&block)
+    block = ->(obj) { obj } unless block_given?
+    for index in 0..(length - 1)
+      return false if block.call(self[index])
+    end
+    true
+  end
+
 end
 
 if $PROGRAM_NAME == __FILE__
