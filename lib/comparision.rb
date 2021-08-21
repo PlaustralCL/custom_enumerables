@@ -34,13 +34,14 @@ puts numbers.select { |num| num.even? }.to_s
 puts ""
 
 puts "my_all? vs all?"
-puts(animals.my_all? { |word| word.length >= 3 })
-puts(animals.all? { |word| word.length >= 3 })
-puts(animals.my_all? { |word| word.length >= 4 })
-puts(animals.all? { |word| word.length >= 4 })
-puts [nil, true, 99].my_all?
-puts [].my_all?
-
+puts "my_all?, block, expect true: #{animals.my_all? { |word| word.length >= 3 }}"
+puts "all?, block, expect true: #{animals.all? { |word| word.length >= 3 }}"
+puts "my_all?, block, expect false: #{animals.my_all? { |word| word.length >= 4 }}"
+puts "all?, block, expect false: #{animals.all? { |word| word.length >= 4 }}"
+puts "my_all?, no block, expect false: #{[nil, true, 99].my_all?}"
+puts "all?, no block, expect false: #{[nil, true, 99].all?}"
+puts "my_all?, no block, expect true: #{[].my_all?}"
+puts "all?, no block, expect true: #{[].all?}"
 
 # if $PROGRAM_NAME == __FILE__
 #   def run

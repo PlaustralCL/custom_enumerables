@@ -33,16 +33,10 @@ module Enumerable
     result
   end
 
-  def my_all?
-    unless block_given?
-      for index in 0..(length - 1)
-        return false unless self[index]
-      end
-      true
-    end
-
+  def my_all?(&block)
+    block = ->(obj) { obj } unless block_given?
     for index in 0..(length - 1)
-      return false unless yield self[index]
+      return false unless block.call(self[index])
     end
     true
   end
