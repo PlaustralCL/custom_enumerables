@@ -42,7 +42,18 @@ puts "my_all?, no block, expect false: #{[nil, true, 99].my_all?}"
 puts "all?, no block, expect false: #{[nil, true, 99].all?}"
 puts "my_all?, no block, expect true: #{[].my_all?}"
 puts "all?, no block, expect true: #{[].all?}"
+puts ""
 
+puts "my_any? vs any?"
+puts "my_any?, block, expect true: #{animals.my_any? { |word| word.length >= 3 }}"
+puts "any?, block, expect true: #{animals.any? { |word| word.length >= 3 }}"
+puts "my_any?, block, expect true: #{animals.my_any? { |word| word.length >= 4 }}"
+puts "any?, block, expect true: #{animals.any? { |word| word.length >= 4 }}"
+puts "my_any?, no block, expect true: #{[nil, true, 99].my_any?}"
+puts "any?, no block, expect true: #{[nil, true, 99].any?}"
+puts "my_any?, no block, expect false: #{[].my_any?}"
+puts "any?, no block, expect false: #{[].any?}"
+puts ""
 # if $PROGRAM_NAME == __FILE__
 #   def run
 #     tests = methods.select { |method| method.to_s.start_with?("test_") }

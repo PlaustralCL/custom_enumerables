@@ -41,6 +41,13 @@ module Enumerable
     true
   end
 
+  def my_any?(&block)
+    block = ->(obj) { obj } unless block_given?
+    for index in 0..(length - 1)
+      return true if block.call(self[index])
+    end
+    false
+  end
 
 end
 
