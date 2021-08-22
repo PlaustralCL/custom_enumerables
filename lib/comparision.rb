@@ -34,47 +34,42 @@ puts numbers.select { |num| num.even? }.to_s
 puts ""
 
 puts "my_all? vs all?"
-puts "my_all?, block, expect true: #{animals.my_all? { |word| word.length >= 3 }}"
-puts "all?, block, expect true: #{animals.all? { |word| word.length >= 3 }}"
-puts "my_all?, block, expect false: #{animals.my_all? { |word| word.length >= 4 }}"
-puts "all?, block, expect false: #{animals.all? { |word| word.length >= 4 }}"
-puts "my_all?, no block, expect false: #{[nil, true, 99].my_all?}"
-puts "all?, no block, expect false: #{[nil, true, 99].all?}"
-puts "my_all?, no block, expect true: #{[].my_all?}"
-puts "all?, no block, expect true: #{[].all?}"
+puts "works with block when all true. expect: #{animals.all? { |word| word.length >= 3 }}; " \
+     "actual: #{animals.my_all? { |word| word.length >= 3 }}"
+puts "works with block when not all true. expect: #{animals.all? { |word| word.length >= 4 }}; " \
+     "actual: #{animals.my_all? { |word| word.length >= 4 }}"
+puts "works with no block when not all true. expect:#{[nil, true, 99].all?}; " \
+     "actual: #{[nil, true, 99].my_all?} "
+puts "works with no block when none false. expect: #{[].all?}; actual: #{[].my_all?}"
 puts ""
 
 puts "my_any? vs any?"
-puts "my_any?, block, expect true: #{animals.my_any? { |word| word.length >= 3 }}"
-puts "any?, block, expect true: #{animals.any? { |word| word.length >= 3 }}"
-puts "my_any?, block, expect true: #{animals.my_any? { |word| word.length >= 4 }}"
-puts "any?, block, expect true: #{animals.any? { |word| word.length >= 4 }}"
-puts "my_any?, no block, expect true: #{[nil, true, 99].my_any?}"
-puts "any?, no block, expect true: #{[nil, true, 99].any?}"
-puts "my_any?, no block, expect false: #{[].my_any?}"
-puts "any?, no block, expect false: #{[].any?}"
+puts "works with block when something present. expect: #{animals.any? { |word| word.length >= 3 }}; " \
+     "actual: #{animals.my_any? { |word| word.length >= 3 }}"
+puts "works with block when something is present. expect: #{animals.any? { |word| word.length >= 4 }}; " \
+     "actual: #{animals.my_any? { |word| word.length >= 4 }}"
+puts "works with no block when something is present. expect:#{[nil, true, 99].any?}; " \
+     "actual: #{[nil, true, 99].my_any?} "
+puts "works with no block when none preset. expect: #{[].any?}; actual: #{[].my_any?}"
 puts ""
 
 puts "my_none? vs none?"
-puts "my_none?, block, expect true: #{animals.my_none? { |word| word.length == 5 }}"
-puts "none?, block, expect true: #{animals.none? { |word| word.length == 5 }}"
-puts "my_none?, block, expect false: #{animals.my_none? { |word| word.length >= 4 }}"
-puts "none?, block, expect false: #{animals.none? { |word| word.length >= 4 }}"
-puts "my_none?, no block, expect false: #{[nil, true, 99].my_none?}"
-puts "none?, no block, expect false: #{[nil, true, 99].none?}"
-puts "my_none?, no block, expect true: #{[].my_none?}"
-puts "none?, no block, expect true: #{[].none?}"
+puts "works with block when none present. expect: #{animals.none? { |word| word.length == 5 }}; " \
+     "actual: #{animals.my_none? { |word| word.length == 5 }}"
+puts "works with block when something is present. expect: #{animals.none? { |word| word.length >= 4 }}; " \
+     "actual: #{animals.my_none? { |word| word.length >= 4 }}"
+puts "works with no block when something is present. expect:#{[nil, true, 99].none?}; " \
+     "actual: #{[nil, true, 99].my_none?} "
+puts "works with no block when none preset. expect: #{[].none?}; actual: #{[].my_none?}"
 puts ""
 
 puts "my_count vs count"
 ary = [1, 2, 4, 2, nil]
-puts "my_count, block, expect 4: #{ary.my_count { |num| num.is_a?(Numeric)}}"
-puts "count, block, expect 4: #{ary.count { |num| num.is_a?(Numeric) }}"
-puts "my_count, no block, expect 5: #{ary.my_count}"
-puts "count, no block, expect 5: #{ary.count}"
-puts "my_count, argument, expect 1: #{ary.count(4)}"
-puts "count, argument, expect 1: #{ary.count(4)}"
-puts ""
+puts "works with a block. expect: #{ary.count { |num| num.is_a?(Numeric) }};" \
+     " actual: #{ary.my_count { |num| num.is_a?(Numeric) }}"
+puts "works with no block or argument. expect: #{ary.count}; actual: #{ary.my_count}"
+puts "works with argument. expect: #{ary.count(4)}; actual: #{ary.count(4)} "
+
 
 # if $PROGRAM_NAME == __FILE__
 #   def run
