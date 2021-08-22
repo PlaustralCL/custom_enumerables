@@ -57,6 +57,14 @@ module Enumerable
     true
   end
 
+  def my_count(item = true, &block)
+    counter = 0
+    block = ->(_obj) { item } unless block_given?
+    for index in 0..(length - 1)
+      counter += 1 if block.call(self[index])
+    end
+    counter
+  end
 end
 
 if $PROGRAM_NAME == __FILE__

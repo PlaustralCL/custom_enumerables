@@ -65,6 +65,17 @@ puts "none?, no block, expect false: #{[nil, true, 99].none?}"
 puts "my_none?, no block, expect true: #{[].my_none?}"
 puts "none?, no block, expect true: #{[].none?}"
 puts ""
+
+puts "my_count vs count"
+ary = [1, 2, 4, 2, nil]
+puts "my_count, block, expect 4: #{ary.my_count { |num| num.is_a?(Numeric)}}"
+puts "count, block, expect 4: #{ary.count { |num| num.is_a?(Numeric) }}"
+puts "my_count, no block, expect 5: #{ary.my_count}"
+puts "count, no block, expect 5: #{ary.count}"
+puts "my_count, argument, expect 1: #{ary.count(4)}"
+puts "count, argument, expect 1: #{ary.count(4)}"
+puts ""
+
 # if $PROGRAM_NAME == __FILE__
 #   def run
 #     tests = methods.select { |method| method.to_s.start_with?("test_") }
