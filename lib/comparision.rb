@@ -69,7 +69,13 @@ puts "works with a block. expect: #{ary.count { |num| num.is_a?(Numeric) }};" \
      " actual: #{ary.my_count { |num| num.is_a?(Numeric) }}"
 puts "works with no block or argument. expect: #{ary.count}; actual: #{ary.my_count}"
 puts "works with argument. expect: #{ary.count(4)}; actual: #{ary.count(4)} "
+puts ""
 
+puts "my_map vs map"
+puts "works with an array when given a block. expect: #{numbers.map { |i| i * i }}; " \
+     "actual: #{numbers.my_map { |i| i * i }}"
+puts "works with a range, given a block. expect: #{(1..4).map { |i| i * i }}; " \
+     "actual: #{(1..4).my_map { |i| i * i }}"
 
 # if $PROGRAM_NAME == __FILE__
 #   def run

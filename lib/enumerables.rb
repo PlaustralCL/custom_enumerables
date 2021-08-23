@@ -65,6 +65,18 @@ module Enumerable
     end
     counter
   end
+
+  def my_map
+    return to_enum unless block_given?
+
+    mapped_array = []
+    index = 0
+    while index < size
+      mapped_array.push(yield to_a[index])
+      index += 1
+    end
+    mapped_array
+  end
 end
 
 if $PROGRAM_NAME == __FILE__
