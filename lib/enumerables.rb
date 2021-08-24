@@ -78,11 +78,15 @@ module Enumerable
     mapped_array
   end
 
-  def my_inject
-    memo = 0
+  def my_inject(init = nil)
+    memo = init ? init : to_a.first
     index = 0
     while index < size
-      memo = yield(memo, to_a[index])
+      if index == 0
+        init ? memo = yield(memo, to_a[index]) : true
+      else
+        memo = yield(memo, to_a[index])
+      end
       index += 1
     end
     memo

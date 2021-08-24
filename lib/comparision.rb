@@ -79,8 +79,10 @@ puts "works with a range, given a block. expect: #{(1..4).map { |i| i * i }}; " 
 puts ""
 
 puts "my_inject vs inject"
-puts "works with block. expect: #{(5..10).inject { |sum, n| sum + n }}; " \
+puts "works with addition block. expect: #{(5..10).inject { |sum, n| sum + n }}; " \
      "actual: #{(5..10).my_inject { |sum, n| sum + n }}"
+puts "works with multiplication block. expect: #{(1..3).inject(2) { |product, n| product * n }}; " \
+     "actual: #{(1..3).inject(2) { |product, n| product * n }} "
 
 
 # if $PROGRAM_NAME == __FILE__
