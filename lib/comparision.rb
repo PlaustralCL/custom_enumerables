@@ -76,6 +76,12 @@ puts "works with an array when given a block. expect: #{numbers.map { |i| i * i 
      "actual: #{numbers.my_map { |i| i * i }}"
 puts "works with a range, given a block. expect: #{(1..4).map { |i| i * i }}; " \
      "actual: #{(1..4).my_map { |i| i * i }}"
+puts ""
+
+puts "my_inject vs inject"
+puts "works with block. expect: #{(5..10).inject { |sum, n| sum + n }}; " \
+     "actual: #{(5..10).my_inject { |sum, n| sum + n }}"
+
 
 # if $PROGRAM_NAME == __FILE__
 #   def run

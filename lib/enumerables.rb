@@ -77,7 +77,18 @@ module Enumerable
     end
     mapped_array
   end
+
+  def my_inject
+    memo = 0
+    index = 0
+    while index < size
+      memo = yield(memo, to_a[index])
+      index += 1
+    end
+    memo
+  end
 end
+
 
 if $PROGRAM_NAME == __FILE__
   numbers = [44, 66, 9, 12]
