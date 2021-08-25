@@ -81,9 +81,10 @@ puts ""
 puts "my_inject vs inject"
 puts "works with addition block. expect: #{(5..10).inject { |sum, n| sum + n }}; " \
      "actual: #{(5..10).my_inject { |sum, n| sum + n }}"
-puts "works with multiplication block. expect: #{(1..3).inject(2) { |product, n| product * n }}; " \
+puts "works with multiplication block. expect: #{(1..3).inject { |product, n| product * n }}; " \
+     "actual: #{(1..3).inject { |product, n| product * n }} "
+puts "works with multiplication block and initial memo value. expect: #{(1..3).inject(2) { |product, n| product * n }}; " \
      "actual: #{(1..3).inject(2) { |product, n| product * n }} "
-
 
 # if $PROGRAM_NAME == __FILE__
 #   def run

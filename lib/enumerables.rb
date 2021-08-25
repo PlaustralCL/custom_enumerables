@@ -79,11 +79,12 @@ module Enumerable
   end
 
   def my_inject(init = nil)
-    memo = init ? init : to_a.first
+    memo =  init || to_a.first
     index = 0
     while index < size
-      if index == 0
-        init ? memo = yield(memo, to_a[index]) : true
+
+      if index.zero?
+        memo = yield(memo, to_a[index]) if init
       else
         memo = yield(memo, to_a[index])
       end
