@@ -82,12 +82,7 @@ module Enumerable
     memo =  init || to_a.first
     index = 0
     while index < size
-
-      if index.zero?
-        memo = yield(memo, to_a[index]) if init
-      else
-        memo = yield(memo, to_a[index])
-      end
+      memo = yield(memo, to_a[index]) if ( index > 0 || init)
       index += 1
     end
     memo
