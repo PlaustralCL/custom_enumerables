@@ -87,6 +87,7 @@ module Enumerable
     end
     memo
   end
+
 end
 
 

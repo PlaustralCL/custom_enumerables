@@ -2,6 +2,10 @@
 
 require_relative "./enumerables"
 
+def multiply_els(ary)
+  ary.my_inject { |product, num| product * num }
+end
+
 numbers = [44, 66, 9, 12]
 animals = %w[ant bear cat]
 
@@ -85,6 +89,14 @@ puts "works with multiplication block. expect: #{(1..3).inject { |product, n| pr
      "actual: #{(1..3).inject { |product, n| product * n }} "
 puts "works with multiplication block and initial memo value. expect: #{(1..3).inject(2) { |product, n| product * n }}; " \
      "actual: #{(1..3).inject(2) { |product, n| product * n }} "
+puts "works with array and block. expect: #{[5, 6, 7].inject { |sum, n| sum + n }}; " \
+     "actual: #{[5, 6, 7].my_inject { |sum, n| sum + n }}"
+puts ""
+
+puts "multiply_els"
+puts "multiplies elements of array together. expect: 40; actual: #{multiply_els([2, 4, 5])}"
+puts ""
+
 
 # if $PROGRAM_NAME == __FILE__
 #   def run
