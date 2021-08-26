@@ -66,13 +66,13 @@ module Enumerable
     counter
   end
 
-  def my_map
+  def my_map(&block)
     return to_enum unless block_given?
 
     mapped_array = []
     index = 0
     while index < size
-      mapped_array.push(yield to_a[index])
+      mapped_array.push(block.call(to_a[index]))
       index += 1
     end
     mapped_array

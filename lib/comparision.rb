@@ -97,6 +97,13 @@ puts "multiply_els"
 puts "multiplies elements of array together. expect: 40; actual: #{multiply_els([2, 4, 5])}"
 puts ""
 
+puts "my_map takes a proc"
+my_proc = Proc.new { |i| i * i }
+puts "my_map works with proc. expect: #{numbers.map(&my_proc)}; actual: #{numbers.my_map(&my_proc)}"
+# puts "my_map takes proc over block when both given. expect #{numbers.map(&my_proc) { |num| num * 2 }}; "\
+#      "actual: #{numbers.my_map(&my_proc) { |num| mum * 2 }}"
+puts ""
+
 
 # if $PROGRAM_NAME == __FILE__
 #   def run
