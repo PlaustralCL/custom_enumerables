@@ -71,11 +71,11 @@ module Enumerable
     return to_enum unless block_given?
 
     mapped_array = []
-    index = 0
-    while index < size
-      mapped_array.push(block.call(to_a[index]))
-      index += 1
-    end
+    # index = 0
+    # while index < size
+    #   mapped_array.push(block.call(to_a[index]))
+    #   index += 1
+    # end
     mapped_array
   end
 
@@ -126,5 +126,13 @@ module Enumerable
     block = ->(obj) { obj } unless block_given?
     my_each { |item| return false unless block.call(item) }
     true
+  end
+
+  def my_map2(&block)
+    return to_enum unless block_given?
+
+    mapped_array = []
+    to_a.my_each { |item| mapped_array.push(block.call(item)) }
+    mapped_array
   end
 end

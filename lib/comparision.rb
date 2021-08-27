@@ -125,3 +125,11 @@ puts "works with no block when not all true. expect:#{[nil, true, 99].all?}; " \
      "actual: #{[nil, true, 99].my_all2?} "
 puts "works with no block when none false. expect: #{[].all?}; actual: #{[].my_all2?}"
 puts ""
+
+puts "my_map using my_each"
+puts "works with an array when given a block. expect: #{numbers.map { |i| i * i }}; " \
+     "actual: #{numbers.my_map2 { |i| i * i }}"
+puts "works with a range, given a block. expect: #{(1..4).map { |i| i * i }}; " \
+     "actual: #{(1..4).my_map2 { |i| i * i }}"
+puts "works with no block or proc given. expect: #{numbers.map}; actual: #{numbers.my_map2}"
+puts ""
