@@ -122,6 +122,11 @@ module Enumerable
     result
   end
 
+  def my_all2?(&block)
+    block = ->(obj) { obj } unless block_given?
+    my_each { |item| return false unless block.call(item) }
+    true
+  end
 end
 
 

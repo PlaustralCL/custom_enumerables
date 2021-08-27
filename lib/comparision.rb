@@ -115,6 +115,16 @@ puts "my_select using my_each vs select"
 puts "works with block. expect: #{numbers.select { |num| num.even? }.to_s}; "\
      "actual: #{numbers.my_select2 { |num| num.even? }.to_s} "
 puts ""
+
+puts "my_all? using my_each"
+puts "works with block when all true. expect: #{animals.all? { |word| word.length >= 3 }}; " \
+     "actual: #{animals.my_all2? { |word| word.length >= 3 }}"
+puts "works with block when not all true. expect: #{animals.all? { |word| word.length >= 4 }}; " \
+     "actual: #{animals.my_all2? { |word| word.length >= 4 }}"
+puts "works with no block when not all true. expect:#{[nil, true, 99].all?}; " \
+     "actual: #{[nil, true, 99].my_all2?} "
+puts "works with no block when none false. expect: #{[].all?}; actual: #{[].my_all2?}"
+puts ""
 # if $PROGRAM_NAME == __FILE__
 #   def run
 #     tests = methods.select { |method| method.to_s.start_with?("test_") }
