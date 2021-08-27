@@ -128,17 +128,3 @@ module Enumerable
     true
   end
 end
-
-
-
-
-if $PROGRAM_NAME == __FILE__
-  numbers = [44, 66, 9, 12]
-  numbers.my_each { |item| puts item }
-  puts ""
-  numbers.each { |item| puts item }
-  puts ""
-
-  p numbers.my_each
-  p numbers.each
-end

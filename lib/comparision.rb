@@ -125,11 +125,3 @@ puts "works with no block when not all true. expect:#{[nil, true, 99].all?}; " \
      "actual: #{[nil, true, 99].my_all2?} "
 puts "works with no block when none false. expect: #{[].all?}; actual: #{[].my_all2?}"
 puts ""
-# if $PROGRAM_NAME == __FILE__
-#   def run
-#     tests = methods.select { |method| method.to_s.start_with?("test_") }
-#     tests.each { |test| send(test) }
-#   end
-
-#   run
-# end
