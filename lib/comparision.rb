@@ -33,8 +33,8 @@ puts numbers.each_with_index
 puts ""
 
 puts "my_select vs select"
-puts numbers.my_select { |num| num.even? }.to_s
-puts numbers.select { |num| num.even? }.to_s
+puts "works with block. expect: #{numbers.select { |num| num.even? }.to_s}; "\
+     "actual: #{numbers.my_select { |num| num.even? }.to_s} "
 puts ""
 
 puts "my_all? vs all?"
@@ -111,7 +111,10 @@ puts "takes proc over block when both given. expect #{numbers.map(&my_proc)}; "\
      "actual: #{numbers.my_map_proc_block(my_proc) { |num| num * 2 }}"
 puts ""
 
-
+puts "my_select using my_each vs select"
+puts "works with block. expect: #{numbers.select { |num| num.even? }.to_s}; "\
+     "actual: #{numbers.my_select2 { |num| num.even? }.to_s} "
+puts ""
 # if $PROGRAM_NAME == __FILE__
 #   def run
 #     tests = methods.select { |method| method.to_s.start_with?("test_") }

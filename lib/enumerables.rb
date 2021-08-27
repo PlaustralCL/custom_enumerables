@@ -113,7 +113,18 @@ module Enumerable
     memo
   end
 
+  # uses my_each
+  def my_select2
+    return to_enum unless block_given?
+
+    result = []
+    my_each { |num| result.push(num) if yield(num) }
+    result
+  end
+
 end
+
+
 
 
 if $PROGRAM_NAME == __FILE__
