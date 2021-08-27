@@ -66,6 +66,7 @@ module Enumerable
     counter
   end
 
+  # Works with blocks
   def my_map(&block)
     return to_enum unless block_given?
 
@@ -73,6 +74,30 @@ module Enumerable
     index = 0
     while index < size
       mapped_array.push(block.call(to_a[index]))
+      index += 1
+    end
+    mapped_array
+  end
+
+  # works with procs
+  def my_map_proc(my_proc)
+    mapped_array = []
+    index = 0
+    while index < size
+      mapped_array.push(my_proc.call(to_a[index]))
+      index += 1
+    end
+    mapped_array
+  end
+
+  # Works with procs and blocks. If both given, uses only the proc
+  def my_map_proc_block(my_proc = nil, &my_block)
+    my_block = my_proc || my_block
+
+    mapped_array = []
+    index = 0
+    while index < size
+      mapped_array.push(my_block.call(to_a[index]))
       index += 1
     end
     mapped_array

@@ -80,6 +80,7 @@ puts "works with an array when given a block. expect: #{numbers.map { |i| i * i 
      "actual: #{numbers.my_map { |i| i * i }}"
 puts "works with a range, given a block. expect: #{(1..4).map { |i| i * i }}; " \
      "actual: #{(1..4).my_map { |i| i * i }}"
+puts "works with no block or proc given. expect: #{numbers.map}; actual: #{numbers.my_map}"
 puts ""
 
 puts "my_inject vs inject"
@@ -97,11 +98,17 @@ puts "multiply_els"
 puts "multiplies elements of array together. expect: 40; actual: #{multiply_els([2, 4, 5])}"
 puts ""
 
-puts "my_map takes a proc"
+puts "my_map_proc takes a proc instead of a block"
 my_proc = Proc.new { |i| i * i }
-puts "my_map works with proc. expect: #{numbers.map(&my_proc)}; actual: #{numbers.my_map(&my_proc)}"
-# puts "my_map takes proc over block when both given. expect #{numbers.map(&my_proc) { |num| num * 2 }}; "\
-#      "actual: #{numbers.my_map(&my_proc) { |num| mum * 2 }}"
+puts "my_map works with proc. expect: #{numbers.map(&my_proc)}; actual: #{numbers.my_map_proc(my_proc)}"
+puts ""
+
+puts "my_map_proc_block takes both, but proc first"
+puts "works with proc. expect: #{numbers.map(&my_proc)}; actual: #{numbers.my_map_proc(my_proc)}"
+puts "works with block. expect #{numbers.map { |num| num * 2 }}; "\
+     "actual: #{numbers.my_map_proc_block { |num| num * 2 }}"
+puts "takes proc over block when both given. expect #{numbers.map(&my_proc)}; "\
+     "actual: #{numbers.my_map_proc_block(my_proc) { |num| num * 2 }}"
 puts ""
 
 
