@@ -10,26 +10,30 @@ numbers = [44, 66, 9, 12]
 animals = %w[ant bear cat]
 
 puts "my_each vs each, with a block"
-numbers.my_each { |item| print "#{item} " }
-puts ""
+print "expect: "
 numbers.each { |item| print "#{item} " }
+puts ""
+print "actual: "
+numbers.my_each { |item| print "#{item} " }
 puts "\n\n"
 
 puts "my_each vs each, no block"
-puts numbers.my_each
-puts numbers.each
+puts "expect: #{numbers.each}"
+puts "actual: #{numbers.my_each}"
 puts ""
 
 puts "my_each_with_index vs each_with_index"
+puts "expect:"
 puts "index --> item"
 numbers.my_each_with_index { |item, index| puts "#{index} --> #{item}" }
 puts ""
+puts "actual:"
 numbers.each_with_index { |item, index| puts "#{index} --> #{item}" }
 puts ""
 
 puts "my_each_with_index vs each_with_index, no block"
-puts numbers.my_each_with_index
-puts numbers.each_with_index
+puts "expect: #{numbers.each_with_index}"
+puts "actual: #{numbers.my_each_with_index}"
 puts ""
 
 puts "my_select vs select"
