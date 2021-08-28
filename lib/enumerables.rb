@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 # Add custom methods to replicate some of the functionality of the built in
-# Enumerable module
+# Enumerable module. The goal of this exercise to not use the built in `each`
+# function the cop for using Style/For has been disabled.
 module Enumerable
   # rubocop:disable Style/For
   def my_each
@@ -43,9 +44,7 @@ module Enumerable
 
   def my_any?(&block)
     block = ->(obj) { obj } unless block_given?
-    for index in 0..(length - 1)
-      return true if block.call(self[index])
-    end
+    my_each { |item| return true if block.call(item) }
     false
   end
 

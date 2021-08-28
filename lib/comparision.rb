@@ -50,8 +50,8 @@ puts ""
 puts "my_any? vs any?"
 puts "works with block when something present. expect: #{animals.any? { |word| word.length >= 3 }}; " \
      "actual: #{animals.my_any? { |word| word.length >= 3 }}"
-puts "works with block when something is present. expect: #{animals.any? { |word| word.length >= 4 }}; " \
-     "actual: #{animals.my_any? { |word| word.length >= 4 }}"
+puts "works with block when something is present. expect: #{animals.any? { |word| word.length >= 5 }}; " \
+     "actual: #{animals.my_any? { |word| word.length >= 5 }}"
 puts "works with no block when something is present. expect:#{[nil, true, 99].any?}; " \
      "actual: #{[nil, true, 99].my_any?} "
 puts "works with no block when none preset. expect: #{[].any?}; actual: #{[].my_any?}"
