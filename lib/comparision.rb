@@ -75,12 +75,13 @@ puts "works with no block or argument. expect: #{ary.count}; actual: #{ary.my_co
 puts "works with argument. expect: #{ary.count(4)}; actual: #{ary.count(4)} "
 puts ""
 
+
 puts "my_map vs map"
 puts "works with an array when given a block. expect: #{numbers.map { |i| i * i }}; " \
      "actual: #{numbers.my_map { |i| i * i }}"
 puts "works with a range, given a block. expect: #{(1..4).map { |i| i * i }}; " \
      "actual: #{(1..4).my_map { |i| i * i }}"
-puts "works with no block or proc given. expect: #{numbers.map}; actual: #{numbers.my_map}"
+puts "works with no block given. expect: #{numbers.map}; actual: #{numbers.my_map}"
 puts ""
 
 puts "my_inject vs inject"

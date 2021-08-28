@@ -66,11 +66,11 @@ module Enumerable
     return to_enum unless block_given?
 
     mapped_array = []
-    # index = 0
-    # while index < size
-    #   mapped_array.push(block.call(to_a[index]))
-    #   index += 1
-    # end
+    index = 0
+    while index < size
+      mapped_array.push(block.call(to_a[index]))
+      index += 1
+    end
     mapped_array
   end
 
