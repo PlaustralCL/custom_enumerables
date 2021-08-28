@@ -50,9 +50,7 @@ module Enumerable
 
   def my_none?(&block)
     block = ->(obj) { obj } unless block_given?
-    for index in 0..(length - 1)
-      return false if block.call(self[index])
-    end
+    my_each { |item| return false if block.call(item) }
     true
   end
 
